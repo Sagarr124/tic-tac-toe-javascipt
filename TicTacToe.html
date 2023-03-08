@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe Game</title>
+        <style>
+            body {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: large;
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-rows: 100px 100px 100px;
+                grid-template-columns: 100px 100px 100px;
+                gap: 3px;
+                justify-content: center;
+            }
+
+            .grid-item {
+                background-color: lightgray;
+                text-align: center;
+                padding-top: 2px;
+                padding-left: 2px;
+            }
+
+            .player-x, .player-o {
+                font-size: 80px;
+            }
+
+            .player-x {
+                color: maroon;
+            }
+
+            .player-o {
+                color: midnightblue;
+            }
+
+            button {
+                background-color: lightgreen;
+                width: 100px;
+                height: 30px;
+                font-weight: bolder;
+                font-size: medium;
+                border-radius: 5px;
+            }
+
+            .container {
+                text-align: center;
+            }
+        </style>
+        <script src="./jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <div id="np">Now Playing: </div>
+        <div class="grid-container">
+            <div class="grid-item item1"></div>
+            <div class="grid-item item2"></div>
+            <div class="grid-item item3"></div>
+            <div class="grid-item item4"></div>
+            <div class="grid-item item5"></div>
+            <div class="grid-item item6"></div>
+            <div class="grid-item item7"></div>
+            <div class="grid-item item8"></div>
+            <div class="grid-item item9"></div>
+        </div>
+        <br>
+        <div class="container">
+            <span>Player One: 'X'</span><br>
+            <span>Player Two: 'O'</span><br><br>
+            <button onclick="clearAll()">Restart</button>
+        </div>
+
+        <script>
+            const playerOne = 'X';
+            const playerTwo = 'O';
+            let playing = playerOne;
+            document.getElementById("np").innerText = "Now Playing: " + playing;
+            let items = document.querySelectorAll(".grid-item");
+
+            for(let item of items) {
+                item.addEventListener("click", paint, { once: true })
+            }
+
+            function paint(item) {
+                if(playing === playerOne) {
+                    item.target.innerText = playerOne;
+                    item.target.classList.add("player-x");
+                    playing = playerTwo;
+                }
+                else if(playing === playerTwo) {
+                    item.target.innerText = playerTwo;
+                    item.target.classList.add("player-o");
+                    playing = playerOne;
+                }
+                check(item);
+                document.getElementById("np").innerText = "Now Playing: " + playing;
+            }
+
+            function check(item) {
+                if (items[0].classList.item(2) != null && items[1].classList.item(2) != null && items[2].classList.item(2) != null && items[0].classList.item(2) === items[1].classList.item(2) && items[0].classList.item(2) === items[2].classList.item(2)) {
+                    if(items[0].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[0].classList.item(2) != null && items[3].classList.item(2) != null && items[6].classList.item(2) != null && items[0].classList.item(2) === items[3].classList.item(2) && items[0].classList.item(2) === items[6].classList.item(2)) {
+                    if(items[0].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[0].classList.item(2) != null && items[4].classList.item(2) != null && items[8].classList.item(2) != null && items[0].classList.item(2) === items[4].classList.item(2) && items[0].classList.item(2) === items[8].classList.item(2)) {
+                    if(items[0].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[1].classList.item(2) != null && items[4].classList.item(2) != null && items[7].classList.item(2) != null && items[1].classList.item(2) === items[4].classList.item(2) && items[1].classList.item(2) === items[7].classList.item(2)) {
+                    if(items[1].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[2].classList.item(2) != null && items[5].classList.item(2) != null && items[8].classList.item(2) != null && items[2].classList.item(2) === items[5].classList.item(2) && items[2].classList.item(2) === items[8].classList.item(2)) {
+                    if(items[2].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[3].classList.item(2) != null && items[4].classList.item(2) != null && items[5].classList.item(2) != null && items[3].classList.item(2) === items[4].classList.item(2) && items[3].classList.item(2) === items[5].classList.item(2)) {
+                    if(items[3].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[6].classList.item(2) != null && items[7].classList.item(2) != null && items[8].classList.item(2) != null && items[6].classList.item(2) === items[7].classList.item(2) && items[6].classList.item(2) === items[8].classList.item(2)) {
+                    if(items[6].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[2].classList.item(2) != null && items[2].classList.item(2) != null && items[6].classList.item(2) != null && items[2].classList.item(2) === items[4].classList.item(2) && items[2].classList.item(2) === items[6].classList.item(2)) {
+                    if(items[6].innerText == playerOne) {
+                        alert("Player One Won!");
+                    }
+                    else {
+                        alert("Player Two Won!");
+                    }
+                    clearAll();
+                }
+                else if (items[0].classList.item(2) != null && items[1].classList.item(2) != null && items[2].classList.item(2) != null && items[3].classList.item(2) != null && items[4].classList.item(2) != null && items[5].classList.item(2) != null && items[6].classList.item(2) != null && items[7].classList.item(2) != null && items[8].classList.item(2) != null) {
+                    alert("Match Tied!")
+                    clearAll();
+                }
+            }
+
+            function clearAll() {
+                for(let item of items) {
+                    item.classList.remove("player-x");
+                    item.classList.remove("player-o");
+                    item.innerText = "";
+                    item.addEventListener("click", paint, { once: true })
+                }
+                playing = playerOne;
+                document.getElementById("np").innerText = "Now Playing: " + playing;
+            }
+
+        </script>
+    </body>
+</html>
